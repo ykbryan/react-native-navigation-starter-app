@@ -13,12 +13,10 @@ export default function({ navigation }) {
     )
   });
 
-  // navigation.navigate('Auth');
-
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>HomeScreen</Text>
-      <Button onPress={() => navigation.navigate('Auth')} title='Open Modal' />
+      <Button onPress={() => navigation.navigate('Modal')} title='Open Modal' />
     </View>
   );
 }

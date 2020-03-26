@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -8,7 +7,7 @@ import HistoryScreen from './Screens/HistoryScreen';
 import SettingsScreen from './Screens/SettingsScreen';
 import DetailsScreen from './Screens/DetailsScreen';
 import HomeScreen from './Screens/HomeScreen';
-import AuthScreen from './Screens/AuthScreen';
+import ModalScreen from './Screens/AuthScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -141,27 +140,25 @@ const HomeTabNavigator = ({ navigation, route }) => {
 
 export default function RootContainer({ navigation }) {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{ gestureEnabled: true, gestureDirection: 'horizontal' }}
-        headerMode='float'
-        mode='modal'
-      >
-        <Stack.Screen
-          options={({ route }) => ({
-            headerShown: shouldHeaderBeShown(route)
-          })}
-          name='HomeTabNavigator'
-          component={HomeTabNavigator}
-        />
-        <Stack.Screen
-          options={({ route }) => ({
-            headerShown: false
-          })}
-          name='Auth'
-          component={AuthScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      screenOptions={{ gestureEnabled: true, gestureDirection: 'horizontal' }}
+      headerMode='float'
+      mode='modal'
+    >
+      <Stack.Screen
+        options={({ route }) => ({
+          headerShown: shouldHeaderBeShown(route)
+        })}
+        name='HomeTabNavigator'
+        component={HomeTabNavigator}
+      />
+      <Stack.Screen
+        options={({ route }) => ({
+          headerShown: false
+        })}
+        name='Modal'
+        component={ModalScreen}
+      />
+    </Stack.Navigator>
   );
 }
