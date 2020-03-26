@@ -12,3 +12,9 @@ yarn start
 # Navigation Flow
 
 ![Navigation Diagram](./docs/navigation-flow.jpg 'Navigation Flow')
+
+## Todos
+
+- [ ] Add nativebase
+- [ ] Add Amplify
+- [ ] Add screen analytics
