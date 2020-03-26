@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { AppState } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AppContainer from './src/AppContainer';
+import AuthContainer from './src/AuthContainer';
 import LoadingScreen from './src/Screens/AuthScreen';
-import AuthStack from './src/AuthStack';
 
 const getActiveRouteName = state => {
   const route = state.routes[state.index];
@@ -77,7 +77,13 @@ export default function App() {
         }
       }}
     >
-      {isLoading ? <LoadingScreen /> : user ? <AppContainer /> : <AuthStack />}
+      {isLoading ? (
+        <LoadingScreen />
+      ) : user ? (
+        <AppContainer />
+      ) : (
+        <AuthContainer />
+      )}
     </NavigationContainer>
   );
 }
