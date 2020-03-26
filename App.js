@@ -1,21 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AppState } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import RootContainer from './src/RootContainer';
-import { createStackNavigator } from '@react-navigation/stack';
+import AppContainer from './src/AppContainer';
 import LoadingScreen from './src/Screens/AuthScreen';
-import LoginScreen from './src/Screens/AuthScreen';
-import SignUpScreen from './src/Screens/AuthScreen';
-
-const AuthStack = createStackNavigator();
-const AuthStackNavigation = () => {
-  return (
-    <AuthStack.Navigator>
-      <AuthStack.Screen name='Login' component={LoginScreen} />
-      <AuthStack.Screen name='SignUp' component={SignUpScreen} />
-    </AuthStack.Navigator>
-  );
-};
+import AuthStack from './src/AuthStack';
 
 const getActiveRouteName = state => {
   const route = state.routes[state.index];
@@ -89,13 +77,7 @@ export default function App() {
         }
       }}
     >
-      {isLoading ? (
-        <LoadingScreen />
-      ) : user ? (
-        <RootContainer />
-      ) : (
-        <AuthStackNavigation />
-      )}
+      {isLoading ? <LoadingScreen /> : user ? <AppContainer /> : <AuthStack />}
     </NavigationContainer>
   );
 }

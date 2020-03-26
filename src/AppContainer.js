@@ -138,7 +138,7 @@ const HomeTabNavigator = ({ navigation, route }) => {
   );
 };
 
-export default function RootContainer({ navigation }) {
+export default function AppContainer() {
   return (
     <Stack.Navigator
       screenOptions={{ gestureEnabled: true, gestureDirection: 'horizontal' }}
@@ -153,7 +153,7 @@ export default function RootContainer({ navigation }) {
         component={HomeTabNavigator}
       />
       <Stack.Screen
-        options={({ route }) => ({
+        options={() => ({
           headerShown: false
         })}
         name='Modal'
