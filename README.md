@@ -11,7 +11,7 @@ yarn start
 
 # Navigation Flow
 
-![Navigation Diagram](./docs/navigation-flow.jpg 'Navigation Flow')
+![Navigation Diagram](./docs/navigation-flow.png 'Navigation Flow')
 
 ## Todos
 
