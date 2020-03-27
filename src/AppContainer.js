@@ -92,7 +92,7 @@ const HomeStackNavigator = () => {
       />
       <HomeStack.Screen
         options={() => ({
-          headerShown: true
+          headerShown: false
         })}
         name='Details'
         component={DetailsScreen}

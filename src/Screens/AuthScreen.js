@@ -1,11 +1,34 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import {
+  Container,
+  Body,
+  Button,
+  Text,
+  Content,
+  Card,
+  CardItem
+} from 'native-base';
 
 export default function({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 30 }}>This is a modal!</Text>
-      <Button onPress={() => navigation.goBack()} title='Dismiss' />
-    </View>
+    <Container>
+      <Content padder style={{ alignContent: 'center' }}>
+        <Card>
+          <CardItem>
+            <Body>
+              <Text>This is a modal!</Text>
+              <Button
+                onPress={() => {
+                  navigation.goBack();
+                }}
+                bordered
+              >
+                <Text>Close</Text>
+              </Button>
+            </Body>
+          </CardItem>
+        </Card>
+      </Content>
+    </Container>
   );
 }
