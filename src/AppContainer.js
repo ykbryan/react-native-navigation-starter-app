@@ -91,12 +91,12 @@ function shouldHeaderBeShown(route) {
     : 'HomeTab';
 
   switch (routeName) {
-    case 'HomeTab':
-    case 'HistoryTab':
-    case 'SettingsTab':
-      return false;
+    // case 'HomeTab':
+    // case 'HistoryTab':
+    // case 'SettingsTab':
     default:
-      return true;
+      return false;
+    //   return true;
   }
 }
 
@@ -114,8 +114,9 @@ const HomeTabNavigator = ({ navigation, route }) => {
       })}
     >
       <Tab.Screen
-        options={() => ({
-          title: 'Home'
+        options={route => ({
+          title: 'Home',
+          headerShown: shouldHeaderBeShown(route)
         })}
         name='HomeTab'
         component={HomeStackNavigator}

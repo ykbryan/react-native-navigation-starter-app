@@ -3,7 +3,9 @@ import { AppState } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AppContainer from './src/AppContainer';
 import AuthContainer from './src/AuthContainer';
-import LoadingScreen from './src/Screens/AuthScreen';
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
 const getActiveRouteName = state => {
   const route = state.routes[state.index];
@@ -11,6 +13,15 @@ const getActiveRouteName = state => {
     return getActiveRouteName(route.state);
   }
   return route.name;
+};
+
+const loadFonts = async () => {
+  // for native-base
+  await Font.loadAsync({
+    Roboto: require('native-base/Fonts/Roboto.ttf'),
+    Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+    ...Ionicons.font
+  });
 };
 
 export default function App() {
@@ -31,6 +42,8 @@ export default function App() {
         setUser(1);
       }, 1000);
     }, 1000);
+
+    loadFonts();
 
     // app state
     AppState.addEventListener('change', _handleAppStateChange);
@@ -77,13 +90,7 @@ export default function App() {
         }
       }}
     >
-      {isLoading ? (
-        <LoadingScreen />
-      ) : user ? (
-        <AppContainer />
-      ) : (
-        <AuthContainer />
-      )}
+      {isLoading ? <AppLoading /> : user ? <AppContainer /> : <AuthContainer />}
     </NavigationContainer>
   );
 }

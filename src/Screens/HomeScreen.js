@@ -1,22 +1,51 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import {
+  Container,
+  Header,
+  Left,
+  Body,
+  Right,
+  Button,
+  Icon,
+  Title,
+  Text,
+  Content
+} from 'native-base';
 
 export default function({ navigation }) {
-  navigation.setOptions({
-    headerRight: () => (
-      <Button
-        title='Save'
-        onPress={() => {
-          navigation.replace('Home');
-        }}
-      />
-    )
-  });
-
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>HomeScreen</Text>
-      <Button onPress={() => navigation.navigate('Modal')} title='Open Modal' />
-    </View>
+    <Container>
+      <Header>
+        <Left>
+          <Button transparent>
+            <Icon name='arrow-back' />
+          </Button>
+        </Left>
+        <Body>
+          <Title>Home Header</Title>
+        </Body>
+        <Right>
+          <Button transparent>
+            <Icon name='menu' />
+          </Button>
+        </Right>
+      </Header>
+      <Content>
+        <Button
+          onPress={() => {
+            navigation.replace('Home');
+          }}
+        >
+          <Text>Save</Text>
+        </Button>
+        <Button
+          onPress={() => {
+            navigation.navigate('Modal');
+          }}
+        >
+          <Text>Open Modal</Text>
+        </Button>
+      </Content>
+    </Container>
   );
 }

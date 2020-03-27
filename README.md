@@ -18,3 +18,5 @@ yarn start
 - [ ] Add nativebase
 - [ ] Add Amplify
 - [ ] Add screen analytics
+
+https://github.com/expo/vector-icons/issues/119
