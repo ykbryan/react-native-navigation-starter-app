@@ -16,7 +16,6 @@ yarn start
 ## Todos
 
 - [ ] Add nativebase
-- [ ] Add Amplify
-- [ ] Add screen analytics
+- [x] Add screen analytics
 
-https://github.com/expo/vector-icons/issues/119
+Nativebase issue: https://github.com/expo/vector-icons/issues/119
