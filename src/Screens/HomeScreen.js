@@ -9,7 +9,9 @@ import {
   Icon,
   Title,
   Text,
-  Content
+  Content,
+  Card,
+  CardItem
 } from 'native-base';
 
 export default function({ navigation }) {
@@ -30,21 +32,26 @@ export default function({ navigation }) {
           </Button>
         </Right>
       </Header>
-      <Content>
-        <Button
-          onPress={() => {
-            navigation.replace('Home');
-          }}
-        >
-          <Text>Save</Text>
-        </Button>
-        <Button
-          onPress={() => {
-            navigation.navigate('Modal');
-          }}
-        >
-          <Text>Open Modal</Text>
-        </Button>
+      <Content padder style={{ alignContent: 'center' }}>
+        <Card>
+          <CardItem>
+            <Body>
+              <Text>//Your text here</Text>
+              <Text>//Your text here</Text>
+              <Text>//Your text here</Text>
+              <Text>//Your text here</Text>
+              <Text>//Your text here</Text>
+              <Button
+                onPress={() => {
+                  navigation.navigate('Modal');
+                }}
+                bordered
+              >
+                <Text>Open Modal</Text>
+              </Button>
+            </Body>
+          </CardItem>
+        </Card>
       </Content>
     </Container>
   );

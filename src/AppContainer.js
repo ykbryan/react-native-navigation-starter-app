@@ -5,86 +5,25 @@ import { Ionicons } from '@expo/vector-icons';
 
 import HistoryScreen from './Screens/HistoryScreen';
 import SettingsScreen from './Screens/SettingsScreen';
-// TODO: need detail screen
 import DetailsScreen from './Screens/DetailsScreen';
 import HomeScreen from './Screens/HomeScreen';
 import ModalScreen from './Screens/AuthScreen';
 
 const Stack = createStackNavigator();
+const HomeStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-// const HomeStack = createStackNavigator();
-// const HistoryStack = createStackNavigator();
-// const SettingsStack = createStackNavigator();
 
-// const HomeStackNavigator = ({ navigation, route }) => {
-//   if (route.state) {
-//     navigation.setOptions({
-//       tabBarVisible: route.state.index > 0 ? false : true
-//     });
+// function getHeaderTitle(route) {
+//   const routeName = route.name;
+//   switch (routeName) {
+//     case 'History':
+//       return 'My Travel Records';
+//     case 'Settings':
+//       return 'My Settings';
+//     default:
+//       return 'Welcome';
 //   }
-//   return (
-//     <HomeStack.Navigator>
-//       <HomeStack.Screen
-//         options={({ route }) => ({
-//           title: getHeaderTitle(route)
-//         })}
-//         name='Home'
-//         component={HomeScreen}
-//       />
-//     </HomeStack.Navigator>
-//   );
-// };
-
-// const HistoryStackNavigator = ({ navigation, route }) => {
-//   if (route.state) {
-//     navigation.setOptions({
-//       tabBarVisible: route.state.index > 0 ? false : true
-//     });
-//   }
-//   return (
-//     <HistoryStack.Navigator>
-//       <HistoryStack.Screen
-//         options={({ route }) => ({
-//           title: getHeaderTitle(route)
-//         })}
-//         name='History'
-//         component={HistoryScreen}
-//       />
-//       <HistoryStack.Screen name='Details' component={DetailsScreen} />
-//     </HistoryStack.Navigator>
-//   );
-// };
-
-// const SettingsStackNavigator = ({ navigation, route }) => {
-//   if (route.state) {
-//     navigation.setOptions({
-//       tabBarVisible: route.state.index > 0 ? false : true
-//     });
-//   }
-//   return (
-//     <SettingsStack.Navigator>
-//       <SettingsStack.Screen
-//         options={({ route }) => ({
-//           title: getHeaderTitle(route)
-//         })}
-//         name='Settings'
-//         component={SettingsScreen}
-//       />
-//     </SettingsStack.Navigator>
-//   );
-// };
-
-function getHeaderTitle(route) {
-  const routeName = route.name;
-  switch (routeName) {
-    case 'History':
-      return 'My Travel Records';
-    case 'Settings':
-      return 'My Settings';
-    default:
-      return 'Welcome';
-  }
-}
+// }
 
 function shouldHeaderBeShown(route) {
   const routeName = route.state
@@ -140,6 +79,28 @@ const HomeTabNavigator = ({ navigation, route }) => {
   );
 };
 
+const HomeStackNavigator = () => {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        options={() => ({
+          title: 'Settings',
+          headerShown: false
+        })}
+        name='HomeTabNavigator'
+        component={HomeTabNavigator}
+      />
+      <HomeStack.Screen
+        options={() => ({
+          headerShown: true
+        })}
+        name='Details'
+        component={DetailsScreen}
+      />
+    </HomeStack.Navigator>
+  );
+};
+
 export default function AppContainer() {
   return (
     <Stack.Navigator
@@ -151,8 +112,8 @@ export default function AppContainer() {
         options={({ route }) => ({
           headerShown: shouldHeaderBeShown(route)
         })}
-        name='HomeTabNavigator'
-        component={HomeTabNavigator}
+        name='HomeStackNavigator'
+        component={HomeStackNavigator}
       />
       <Stack.Screen
         options={() => ({

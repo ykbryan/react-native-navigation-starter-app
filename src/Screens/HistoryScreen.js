@@ -9,7 +9,9 @@ import {
   Icon,
   Title,
   Text,
-  Content
+  Content,
+  Card,
+  CardItem
 } from 'native-base';
 
 export default function({ navigation }) {
@@ -31,13 +33,20 @@ export default function({ navigation }) {
         </Right>
       </Header>
       <Content>
-        <Button
-          onPress={() => {
-            navigation.navigate('Details');
-          }}
-        >
-          <Text>Go to Details Screen</Text>
-        </Button>
+        <Card transparent>
+          <CardItem>
+            <Body>
+              <Button
+                onPress={() => {
+                  navigation.navigate('Details');
+                }}
+                bordered
+              >
+                <Text>Go to Details Screen</Text>
+              </Button>
+            </Body>
+          </CardItem>
+        </Card>
       </Content>
     </Container>
   );
